@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20141002232134) do
     t.string   "name",            null: false
     t.string   "email",           null: false
     t.date     "dob"
-    t.string   "password_digest"
-    t.integer  "personality_id",  null: false
+    t.string   "password_digest", null: false
+    t.integer  "personality_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
