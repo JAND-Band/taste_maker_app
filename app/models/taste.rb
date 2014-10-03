@@ -16,5 +16,4 @@ class Taste < ActiveRecord::Base
     end
   end
 
-
 end

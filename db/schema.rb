@@ -11,36 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002232134) do
+ActiveRecord::Schema.define(version: 0) do
 
-  drop_table 'personalities' unless !ActiveRecord::Base.connection.table_exists? 'personalities'
-  drop_table 'tastes' unless !ActiveRecord::Base.connection.table_exists? 'tastes'
-  drop_table 'users' unless !ActiveRecord::Base.connection.table_exists? 'users'
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "personalities", force: true do |t|
-    t.string   "name",       null: false
-    t.text     "descr"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tastes", force: true do |t|
-    t.string   "category",       null: false
-    t.integer  "personality_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "name",            null: false
-    t.string   "email",           null: false
-    t.date     "dob"
-    t.string   "password_digest"
-    t.integer  "personality_id",  null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end

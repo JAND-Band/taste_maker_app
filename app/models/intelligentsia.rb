@@ -1,0 +1,2 @@
+class Intelligentsia < Personality
+end
