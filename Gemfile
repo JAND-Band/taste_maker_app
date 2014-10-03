@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-
+gem 'httparty'
+gem 'twitter'
+gem 'json'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
