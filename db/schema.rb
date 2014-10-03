@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20141002232134) do
 
+  drop_table 'personalities' unless !ActiveRecord::Base.connection.table_exists? 'personalities'
+  drop_table 'tastes' unless !ActiveRecord::Base.connection.table_exists? 'tastes'
+  drop_table 'users' unless !ActiveRecord::Base.connection.table_exists? 'users'
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
