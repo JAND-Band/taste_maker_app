@@ -11,14 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141002232134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  drop_table 'personalities' unless !ActiveRecord::Base.connection.table_exists? 'personalities'
-  drop_table 'users' unless !ActiveRecord::Base.connection.table_exists? 'users'
-  drop_table 'tastes' unless !ActiveRecord::Base.connection.table_exists? 'tastes'
 
   create_table "personalities", force: true do |t|
     t.string   "name",       null: false
