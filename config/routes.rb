@@ -1,9 +1,32 @@
 Rails.application.routes.draw do
-  resources :tastes
+  root "welcome#index"
+
+  get "/login" => "sessions#new"
+  resource  :session, only: [:create, :destroy]
+
+  resources :users do
+    member do
+      get   "password"
+      patch "password", action: "update_password"
+      get   "confirm_delete"
+    end
+  end
 
   resources :personalities
+  resources :escape_artists, controller: 'personalities', type: 'EscapeArtist'
+  resources :intelligentsias, controller: 'personalities', type: 'Intelligentsia'
+  resources :realists, controller: 'personalities', type: 'Realist'
+  resources :sartorialists, controller: 'personalities', type: 'Sartorialist'
+  resources :techies, controller: 'personalities', type: 'Techie'
 
-  resources :users
+  resources :tastes
+  resources :does, controller: 'tastes', type: 'Do'
+  resources :eats, controller: 'tastes', type: 'Eat'
+  resources :goes, controller: 'tastes', type: 'Go'
+  resources :listens, controller: 'tastes', type: 'Listen'
+  resources :reads, controller: 'tastes', type: 'Read'
+  resources :shops, controller: 'tastes', type: 'Shop'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,2 @@
+class Shop < Taste
+end

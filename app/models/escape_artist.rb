@@ -1,0 +1,2 @@
+class EscapeArtist < Personality
+end
