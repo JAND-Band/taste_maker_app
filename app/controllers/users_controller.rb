@@ -75,6 +75,38 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :dob, :password_digest)
+      params.require(:user).permit(:name, :email, :dob, :password, :password_confirmation)
     end
+
+    def user_password_params
+    @user_password_params ||= params.require(:user).permit(
+      :old_password,
+      :password,
+      :password_confirmation
+    )
+  end
+
+  def load_user
+    @user = User.find_by(id: params[:id])
+    redirect_to root_path if !@user
+  end
+
+  def authorize_admin_only
+    unless current_user.is_admin?
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def authorize_user_only
+    unless current_user == @user
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def authorize_user_or_admin
+    unless current_user == @user || current_user.is_admin?
+      redirect_to user_path(current_user)
+    end
+  end
+
 end

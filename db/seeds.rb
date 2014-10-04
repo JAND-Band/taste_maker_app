@@ -2,18 +2,17 @@ Personality.delete_all
 User.delete_all
 Taste.delete_all
 
-p1 = Personality.create(name:"sartorialist", descr: "style 24/7")
-p2 = Personality.create(name:"realist", descr: "the hoi polloi")
-p3 = Personality.create(name:"escape artist", descr: "wanderlusting world traveler")
-p4 = Personality.create(name:"intelligentsia", descr: "wicked smart")
+p1 = Personality.create(name:"escape_artist", descr: "style 24/7")
+p2 = Personality.create(name:"intelligentsia", descr: "the hoi polloi")
+p3 = Personality.create(name:"realist", descr: "wanderlusting world traveler")
+p4 = Personality.create(name:"sartorialist", descr: "wicked smart")
 p5 = Personality.create(name:"techie", descr: "full stack developer/unemployed")
 
-
-u1 = User.create(name:"Anastasia Konecky", email: "anastasiakonecky@gmail.com", personality_id: 1)
-u2 = User.create(name:"Neil Sidhu", email: "neilsidhu@gmail.com", personality_id: 2)
-u3 = User.create(name:"Michael Hall", email: "deweybanks@gmail.com", personality_id: 3)
-u4 = User.create(name:"Jackie Williams", email: "freejacque@gmail.com", personality_id: 4)
-u5 = User.create(name:"Janine Harper", email: "janineharper@gmail.com", personality_id: 5)
+u1 = User.create(name:"Anastasia Konecky", email: "anastasiakonecky@gmail.com", password: "password", password_confirmation: "password", personality_id: 1)
+u2 = User.create(name:"Neil Sidhu", email: "neilsidhu@gmail.com", password: "password", password_confirmation: "password", personality_id: 2)
+u3 = User.create(name:"Michael Hall", email: "deweybanks@gmail.com", password: "password", password_confirmation: "password", personality_id: 3)
+u4 = User.create(name:"Jackie Williams", email: "freejacque@gmail.com", password: "password", password_confirmation: "password", personality_id: 4)
+u5 = User.create(name:"Janine Harper", email: "janineharper@gmail.com", password: "password", password_confirmation: "password", personality_id: 5)
 
 t1 = Taste.create(category:"eat", personality_id: 1)
 t2 = Taste.create(category:"where", personality_id: 1)
