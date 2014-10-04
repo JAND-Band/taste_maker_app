@@ -16,9 +16,12 @@
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
+  <strong>Personality:</strong>
+  <% id = @user.personality_id %>
+  <% personality = Personality.find(id) %>
+  <%= personality.name %>
 </p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
