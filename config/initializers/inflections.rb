@@ -2,6 +2,7 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'do', 'does'
   inflect.irregular 'go', 'goes'
+  inflect.irregular 'intelligentsia', 'intelligentsia'
 end
 # Add new inflection rules using the following format. Inflections
 # are locale specific, and you may define rules for as many different
