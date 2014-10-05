@@ -22,6 +22,8 @@ module FeedHelper
     go_query:"travelandlife"
   }
 
+
+
   # CLIENT ID = '0f47fa507b9d4040905722a4637ab3ed'
   # CLIENT SECRET = 'fdbaab036f4c431da072f2a201c67774'
 
@@ -72,15 +74,19 @@ module FeedHelper
   # end
 
   def instagram_api(key)
-    HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?access_token=36703057.0f47fa5.e7416325ba284d5f9477d3e7e401b1bf')
+    @response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?access_token=36703057.0f47fa5.e7416325ba284d5f9477d3e7e401b1bf')
   end
 
   def instagram_api_view
-    "<% @instagram_go_realist_response[\"data\"].each do |image| %>
+    "<% @response[\"data\"].each do |image| %>
     <ul>
     <%= image[\"link\"] %>
     <% end %>"
   end
+
+  def
+
+
 end
 
 
