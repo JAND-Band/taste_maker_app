@@ -20,15 +20,23 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :dob %><br>
+    <%= f.label :dob, 'Birthday' %><br>
     <%= f.date_field :dob %>
   </div>
 
-  <% unless @user.persisted? # if we are creating instead of editing... %>
+  <% if !@user.persisted? # if we are creating instead of editing... %>
   <div class="field">
     <%= f.label :password %>*<br>
     <%= f.password_field :password %></br>
     <%= f.label :password_confirmation, 'Confirmation' %>*<br>
+    <%= f.password_field :password_confirmation %></br>
+  </div>
+
+  <% else %>
+    <div class="field">
+    <%= f.label :password, 'Please re-enter your Password to make changes'%>*<br>
+    <%= f.password_field :password %></br>
+    <%= f.label :password_confirmation, 'Password Confirmation' %>*<br>
     <%= f.password_field :password_confirmation %></br>
   </div>
   <% end %>
