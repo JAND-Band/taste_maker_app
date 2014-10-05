@@ -52,11 +52,11 @@ module FeedHelper
   end
 
   def nyt_api(key)
-    @response = HTTParty.get('http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[#{key}]}&#{NYT_API_KEY}')
+    @nyt_response = HTTParty.get('http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[#{key}]}&#{NYT_API_KEY}')
   end
 
   def nyt_api_view
-    "<% @response[\"results\"].each do |book| %>
+    "<% @nyt_response[\"results\"].each do |book| %>
       <% book[\"book_details\"].each do |info| %>
       <ul>
       <%= info[\"title\"] %>
@@ -80,11 +80,11 @@ module FeedHelper
   end
 
   def meetup_api(key)
-    @response = HTTParty.get("http://api.meetup.com/2/groups.json/?zip=10015&topic=hackathon&order=location&asc=true&#{MEETUP_KEY}")
+    @meetup_response = HTTParty.get("http://api.meetup.com/2/groups.json/?zip=10015&topic=hackathon&order=location&asc=true&#{MEETUP_KEY}")
   end
 
   def meetup_api_view
-    "<% @response[\"results\"].each do |meetup| %>
+    "<% @meetup_response[\"results\"].each do |meetup| %>
     <ul>
     <%= meetup[\"name\"] %>
     <%= meetup[\"link\"] %>
@@ -94,11 +94,11 @@ module FeedHelper
   end
 
   def instagram_api(key)
-    @response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
+    @instagram_response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
   end
 
   def instagram_api_view
-    "<% @response[\"data\"].each do |image| %>
+    "<% @instagram_response[\"data\"].each do |image| %>
     <ul>
     <%= image[\"link\"] %>
     <% end %>"
