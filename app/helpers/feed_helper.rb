@@ -3,11 +3,17 @@ module FeedHelper
 #API KEYS & RSS URLS
 #####################
   SARTORIALIST_RSS_URL = 'http://www.nyartbeat.com/list/event_opening.en.xml'
+
   REALIST_RSS_URL = 'http://feeds.feedburner.com/nymag/grubstreet?format=xml'
+
   ESCAPE_ARTIST_URL = 'http://www.redbullskydiveteam.com/rss.xml'
+
   INTELLIGENTSIA_URL = 'http://www.strandbooks.com/index.cfm/fuseaction/event.index/nodeID/a35c34a6-bda5-4733-9f7d-fa7187e8c2e3/?view=rss'
+
   WUNDERGROUND_API_KEY = ENV['a825d927a8d698d3']
+
   NYT_API_KEY = 'a4a129410af3be7a2fedd9101879acf9:1:67095397'
+
   NYT_BESTSELLER_QUERY = {
     escape_artist_query:"trade-fiction-paperback",
     sartorialist_query:"hardcover-fiction",
@@ -21,6 +27,12 @@ module FeedHelper
     shop_query:"streetstyle",
     go_query:"travelandlife"
   }
+
+  INSTAGRAM_ACCESS_TOKEN = '36703057.0f47fa5.e7416325ba284d5f9477d3e7e401b1bf'
+
+  MEETUP_KEY = '4830227a3b7fa7b3a564265372f718'
+
+
 
   # CLIENT ID = '0f47fa507b9d4040905722a4637ab3ed'
   # CLIENT SECRET = 'fdbaab036f4c431da072f2a201c67774'
@@ -40,7 +52,7 @@ module FeedHelper
   end
 
   def nyt_api(key)
-    @response = HTTParty.get('http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[#{key}]}&api-key=a4a129410af3be7a2fedd9101879acf9%3A1%3A67095397')
+    @response = HTTParty.get('http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[#{key}]}&#{NYT_API_KEY}')
   end
 
   def nyt_api_view
@@ -67,20 +79,32 @@ module FeedHelper
     @temp_in_farh = @weather["current_observation"]["temp_f"]
   end
 
-  # def meetup_api
+  def meetup_api(key)
+    @response = HTTParty.get("http://api.meetup.com/2/groups.json/?zip=10015&topic=hackathon&order=location&asc=true&#{MEETUP_KEY}")
+  end
 
-  # end
+  def meetup_api_view
+    "<% @response[\"results\"].each do |meetup| %>
+    <ul>
+    <%= meetup[\"name\"] %>
+    <%= meetup[\"link\"] %>
+    <%= meetup[\"description\"] %>
+    <%= meetup[\"rating\"] %>
+    <% end %>"
+  end
 
   def instagram_api(key)
-    HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?access_token=36703057.0f47fa5.e7416325ba284d5f9477d3e7e401b1bf')
+    @response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
   end
 
   def instagram_api_view
-    "<% @instagram_go_realist_response[\"data\"].each do |image| %>
+    "<% @response[\"data\"].each do |image| %>
     <ul>
     <%= image[\"link\"] %>
     <% end %>"
   end
+
+
 end
 
 
