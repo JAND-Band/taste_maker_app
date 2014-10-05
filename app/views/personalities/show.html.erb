@@ -1,13 +1,13 @@
+<%= render 'layouts/header' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @personality.name %>
-</p>
+<h2 class="jumbotron">
+  <%= @personality.name %>: <%= @personality.tags %>
+</h2>
 
 <p>
   <strong>Descr:</strong>
-  <%= @personality.descr %>
+  <%= @personality.description %>
 </p>
 
 <%= link_to 'Edit', edit_personality_path(@personality) %> |

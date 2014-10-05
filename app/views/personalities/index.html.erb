@@ -1,10 +1,11 @@
+<%= render 'layouts/header' %>
 <h1>Listing personalities</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Descr</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +14,7 @@
     <% @personalities.each do |personality| %>
       <tr>
         <td><%= personality.name %></td>
-        <td><%= personality.descr %></td>
+        <td><%= personality.description %></td>
         <td><%= link_to 'Show', personality %></td>
         <td><%= link_to 'Edit', edit_personality_path(personality) %></td>
         <td><%= link_to 'Destroy', personality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
