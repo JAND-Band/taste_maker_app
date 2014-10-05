@@ -5,4 +5,15 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+
+  def is_admin?
+     (self.role =~ /admin/) == 0 ? true : false
+  end
+
+  def role_value
+    case self.role
+    when 'admin'      then 2
+    when 'customer'   then 1
+    else 0; end
+  end
 end

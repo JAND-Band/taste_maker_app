@@ -8,11 +8,11 @@ p3 = Personality.create(name:"Realist", tags: "The Hoi Polloi (Salt of the Earth
 p4 = Personality.create(name:"Sartorialist", tags: "Style 24/7", description: "place holder")
 p5 = Personality.create(name:"Techie", tags: "Full Stack Developer/Unemployed", description: "place holder")
 
-u1 = User.create(name:"Anastasia Konecky", email: "anastasiakonecky@gmail.com", password: "password", password_confirmation: "password", personality_id: 1)
-u2 = User.create(name:"Neil Sidhu", email: "neilsidhu@gmail.com", password: "password", password_confirmation: "password", personality_id: 2)
-u3 = User.create(name:"Michael Hall", email: "deweybanks@gmail.com", password: "password", password_confirmation: "password", personality_id: 3)
-u4 = User.create(name:"Jackie Williams", email: "freejacque@gmail.com", password: "password", password_confirmation: "password", personality_id: 4)
-u5 = User.create(name:"Janine Harper", email: "janineharper@gmail.com", password: "password", password_confirmation: "password", personality_id: 5)
+u1 = User.create(name:"Anastasia Konecky", email: "anastasiakonecky@gmail.com", password: "password", password_confirmation: "password", personality_id: 1, role: "admin")
+u2 = User.create(name:"Neil Sidhu", email: "neilsidhu@gmail.com", password: "password", password_confirmation: "password", personality_id: 2, role: "admin")
+u3 = User.create(name:"Michael Hall", email: "deweybanks@gmail.com", password: "password", password_confirmation: "password", personality_id: 3, role: "admin")
+u4 = User.create(name:"Jacki Williams", email: "freejacque@gmail.com", password: "password", password_confirmation: "password", personality_id: 4, role: "admin")
+u5 = User.create(name:"Janine Harper", email: "janineharper@gmail.com", password: "password", password_confirmation: "password", personality_id: 5, role: "customer")
 
 t1 = Taste.create(category: "Eat", personality_id: 1)
 t2 = Taste.create(category: "Go", personality_id: 1)
