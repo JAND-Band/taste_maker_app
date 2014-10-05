@@ -2,12 +2,13 @@ class User < ActiveRecord::Base
 
   validates :name, :email, presence: true, uniqueness: true
   validates :password, :password_confirmation, presence: true
-  # for use with geocoder
-  geocoded_by :address
-  after_validation :geocode # auto-fetch coordinates
+  # for use with geocoder (this stuff may have to go into the session model instead)
+  # can't be tested until the app is uploaded to heroku
+  # geocoded_by :address
+  # after_validation :geocode # auto-fetch coordinates
 
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :reverse_geocode  # auto-fetch address
+  # reverse_geocoded_by :latitude, :longitude
+  # after_validation :reverse_geocode  # auto-fetch address
 
   has_secure_password
 
@@ -32,11 +33,11 @@ class User < ActiveRecord::Base
     @country = request.location.country
   end
 
-  def get_longitude
+  def longitude
     request.location.longitude
   end
 
-  def get_latitude
+  def latitude
     request.location.latitude
   end
 
