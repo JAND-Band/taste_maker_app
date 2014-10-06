@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20141005201000) do
   enable_extension "plpgsql"
 
   create_table "personalities", force: true do |t|
-    t.string   "name",       null: false
-    t.text     "descr"
+    t.string   "name",        null: false
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "tags"
@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 20141005201000) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "name",            null: false
-    t.string   "email",           null: false
+    t.string   "name",                                 null: false
+    t.string   "email",                                null: false
     t.date     "dob"
-    t.string   "password_digest", null: false
+    t.string   "password_digest",                      null: false
     t.integer  "personality_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role"
+    t.string   "role",            default: "customer"
     t.float    "latitude"
     t.float    "longitude"
   end

@@ -1,5 +1,6 @@
 class TastesController < ApplicationController
-  before_action :set_taste, only: [:show, :edit, :update, :destroy]
+  before_action :set_taste, only:  [:show]
+  before_action :authorize_admin_only,    only: :index
 
   # GET /tastes
   # GET /tastes.json
@@ -10,6 +11,7 @@ class TastesController < ApplicationController
   # GET /tastes/1
   # GET /tastes/1.json
   def show
+    nyt_api(:escape_artist_query)
   end
 
   # GET /tastes/new
@@ -71,4 +73,22 @@ class TastesController < ApplicationController
     def taste_params
       params.require(:taste).permit(:name)
     end
+
+    def authorize_admin_only
+    unless current_user.is_admin?
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def authorize_user_only
+    unless current_user == @user
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def authorize_user_or_admin
+    unless current_user == @user || current_user.is_admin?
+      redirect_to user_path(current_user)
+    end
+  end
 end

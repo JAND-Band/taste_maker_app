@@ -12,25 +12,25 @@ module FeedHelper
 
   WUNDERGROUND_API_KEY = ENV['a825d927a8d698d3']
 
-  NYT_API_KEY = 'a4a129410af3be7a2fedd9101879acf9:1:67095397'
+  NYT_API_KEY = "a4a129410af3be7a2fedd9101879acf9:1:67095397"
 
   NYT_BESTSELLER_QUERY = {
-    escape_artist_query:"trade-fiction-paperback",
-    sartorialist_query:"hardcover-fiction",
-    intelligentsia_query:"hardcover-nonfiction",
-    realist_query:"paperback-nonfiction",
-    techie:"e-book-fiction"
+    escape_artist_query: "trade-fiction-paperback",
+    sartorialist_query: "hardcover-fiction",
+    intelligentsia_query: "hardcover-nonfiction",
+    realist_query: "paperback-nonfiction",
+    techie: "e-book-fiction"
   }
 
   INSTAGRAM_QUERY = {
-    eat_query:"foodieadventures",
-    shop_query:"streetstyle",
-    go_query:"travelandlife"
+    eat_query: "foodieadventures",
+    shop_query: "streetstyle",
+    go_query: "travelandlife"
   }
 
-  INSTAGRAM_ACCESS_TOKEN = '36703057.0f47fa5.e7416325ba284d5f9477d3e7e401b1bf'
+  INSTAGRAM_ACCESS_TOKEN = "36703057.0f47fa5.e7416325ba284d5f9477d3e7e401b1bf"
 
-  MEETUP_KEY = '4830227a3b7fa7b3a564265372f718'
+  MEETUP_KEY = "4830227a3b7fa7b3a564265372f718"
 
 
 
@@ -52,7 +52,7 @@ module FeedHelper
   end
 
   def nyt_api(key)
-    @response = HTTParty.get('http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[#{key}]}&#{NYT_API_KEY}')
+    @response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=NYT_BESTSELLER_QUERY[#{key}]&#{NYT_API_KEY}")
   end
 
   def nyt_api_view
@@ -70,7 +70,6 @@ module FeedHelper
       <% end %>
     <% end %>"
   end
-
 
   def wunderground_api
     @city = "new_york"
@@ -94,7 +93,7 @@ module FeedHelper
   end
 
   def instagram_api(key)
-    @response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
+    @response = HTTParty.get('https://api.instagram.com/v1/tags/INSTAGRAM_QUERY[#{key}]/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
   end
 
   def instagram_api_view
@@ -104,6 +103,9 @@ module FeedHelper
     <% end %>"
   end
 
+  def test
+    @response = "test works"
+  end
 
 end
 
