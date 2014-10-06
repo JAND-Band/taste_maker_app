@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   resource  :session, only: [:create, :destroy]
 
+  get "/quiz" => "quizzes#new"
+  resource  :quiz, only: [:create]
+
+
+
   resources :users do
     member do
       get   "password"
@@ -26,6 +31,7 @@ Rails.application.routes.draw do
   resources :listens, controller: 'tastes', type: 'Listen'
   resources :reads, controller: 'tastes', type: 'Read'
   resources :shops, controller: 'tastes', type: 'Shop'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
