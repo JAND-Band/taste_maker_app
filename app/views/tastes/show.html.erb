@@ -1,10 +1,15 @@
 <%= render 'layouts/header' %>
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <strong>Name:</strong>
-  <%= @taste.name %>
+  <%= @taste.category %>
 </p>
+<% if @taste.id == 4 %>
+<%= test %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_taste_path(@taste) %> |
 <%= link_to 'Back', tastes_path %>

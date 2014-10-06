@@ -12,7 +12,7 @@
   <tbody>
     <% @tastes.each do |taste| %>
       <tr>
-        <td><%= taste.name %></td>
+        <td><%= taste.category %></td>
         <td><%= link_to 'Show', taste %></td>
         <td><%= link_to 'Edit', edit_taste_path(taste) %></td>
         <td><%= link_to 'Destroy', taste, method: :delete, data: { confirm: 'Are you sure?' } %></td>
