@@ -95,7 +95,7 @@ module FeedHelper
   end
 
   def instagram_api(key)
-    @instagram_response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
+    @instagram_response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?access_token=#{INSTAGRAM_ACCESS_TOKEN}')
     @instagram_parsed_response = JSON.parse(instagram_response)
   end
 
