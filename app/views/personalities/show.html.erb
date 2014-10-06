@@ -1,4 +1,4 @@
-<%= render 'layouts/header' %>
+
 <p id="notice"><%= notice %></p>
 
 <h2 class="jumbotron">
@@ -6,9 +6,8 @@
 </h2>
 
 <p>
-  <strong>Descr:</strong>
-  <%= @personality.description %>
+  <strong><%= @personality.description %></strong>
 </p>
 
-<%= link_to 'Edit', edit_personality_path(@personality) %> |
-<%= link_to 'Back', personalities_path %>
+<p> Disagree with our assessment? (<%= link_to("Retake the quiz
+", user_quiz_path) %>)</p>

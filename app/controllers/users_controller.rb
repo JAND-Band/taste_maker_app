@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     # binding.pry
     user = User.find_by(name: user_params["name"])
     id = user.id
-    redirect_to "/users/#{id}/quiz/new"
+    redirect_to "/users/#{id}/quiz"
 
     # respond_to do |format|
     #   if @user.save

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get   "confirm_delete"
     end
 
-    resource  :quiz, only: [:new, :show]
+    resource  :quiz, only: [:show, :update]
     resource :personality, only: [:show, :update]
     resources :tastes, only: [:index, :show]
   end

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
-  validates :name, :email, presence: true, uniqueness: true
-  validates :password, :password_confirmation, presence: true
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
   # for use with geocoder (this stuff may have to go into the session model instead)
   # can't be tested until the app is uploaded to heroku
   # geocoded_by :address
