@@ -53,7 +53,7 @@ module FeedHelper
 
   def nyt_api(key)
     @nyt_response = HTTParty.get('http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[#{key}]}&api-key=#{NYT_API_KEY}')
-    @nyt_parsed_response = JSON.parse(@nyt_response)
+    @nyt_parsed_response = JSON.parse(@nyt_response.to_json)
   end
 
   def nyt_api_view
