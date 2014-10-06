@@ -17,7 +17,7 @@ module SessionHelper
 
   def log_out!
     session[:user_id] = nil
-    redirect_to login
+    redirect_to login_path
   end
 
 end

@@ -2,11 +2,11 @@ Personality.delete_all
 User.delete_all
 Taste.delete_all
 
-p1 = Personality.create(name:"EscapeArtist", tags: "Wanderlusting World Traveler", description: "place holder")
-p2 = Personality.create(name:"Intelligentsia", tags: "Wicked Smart", description: "place holder")
-p3 = Personality.create(name:"Realist", tags: "The Hoi Polloi (Salt of the Earth)", description: "place holder")
-p4 = Personality.create(name:"Sartorialist", tags: "Style 24/7", description: "place holder")
-p5 = Personality.create(name:"Techie", tags: "Full Stack Developer/Unemployed", description: "place holder")
+p1 = Personality.create(name:"EscapeArtist", tags: "Born To Run", description: "No one does travel and exploration quite like you. You are Kerouac, on the road, taking in all the sound and fury of earth's remotest places and most interesting cultures. You give tips to Bourdain and run with the bulls in Spain. Your Instagram account has tons of followers, almost as many as your passport has stamps. What’s next? To Infinity and Beyond!")
+p2 = Personality.create(name:"Intelligentsia", tags: "Wicked Smart", description: "Your thirst for knowledge knows no bounds.  Whatever your interest or area of expertise, you own it with an intellectual capacity that is unparalleled. Whether exploring new theories or designing a better mousetrap, you can still be depended upon for scintillating conversation.  In fact, that time you had a stomach virus and couldn’t attend the salon on the works of Marcel Proust, they just cancelled it.  That’s right, you’ve got that upcoming MacArthur Genius grant in the bag.")
+p3 = Personality.create(name:"Realist", tags: "All Hail the Hoi Palloi", description: "You are all about keeping it real.  Down to earth, quality and comfort are your thing.  Whether you’re talking about home cooking or live music, you know what you like and don’t feel the need to veer too far off of your path.  You don’t need the latest trends to know what’s cool.  Keep on truckin’.")
+p4 = Personality.create(name:"Sartorialist", tags: "Style 24/7", description: "You have a personal style that appears effortless.  Only you know what it takes to cultivate that kind of flair.  You can often be found at the latest gallery opening, secret restaurant or new rooftop bar.  You may have been style snapped for a street style fashion blog or two, but no big deal.  That kind of thing is to be expected when you’re that flawless.  Shine on, you crazy diamond.")
+p5 = Personality.create(name:"Techie", tags: "Full Stack Developer/Unemployed", description: "You are having your moment.  All of those years of Dungeons and Dragons, Larp and Mine Craft  have paid off.  In this brave new world, your skills and ability are desired like never before.  Suddenly, you are setting the trends.  When you aren’t spending your weekend hacking, you can be found curled up with a log of sweet, sweet error messages. High Fives all around!")
 
 u1 = User.create(name:"Anastasia Konecky", email: "anastasiakonecky@gmail.com", password: "password", password_confirmation: "password", personality_id: 1, role: "admin")
 u2 = User.create(name:"Neil Sidhu", email: "neilsidhu@gmail.com", password: "password", password_confirmation: "password", personality_id: 2, role: "admin")
