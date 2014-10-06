@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   resource  :session, only: [:create, :destroy]
 
-  get "/quiz" => "quizzes#new"
-  resource  :quiz, only: [:create]
+  # get "/quiz" => "quizzes#new"
+  resource  :quiz, only: [:new, :create]
 
 
 
