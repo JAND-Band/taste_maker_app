@@ -53,10 +53,12 @@ module FeedHelper
 
   def nyt_api(key)
     @nyt_response = HTTParty.get('http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[#{key}]}&#{NYT_API_KEY}')
+    @nyt_parsed_response = JSON.parse(@nyt_response)
+
   end
 
   def nyt_api_view
-    "<% @nyt_response[\"results\"].each do |book| %>
+    "<% @nyt_parsed_response[\"results\"].each do |book| %>
       <% book[\"book_details\"].each do |info| %>
       <ul>
       <%= info[\"title\"] %>
@@ -81,10 +83,11 @@ module FeedHelper
 
   def meetup_api(key)
     @meetup_response = HTTParty.get("http://api.meetup.com/2/groups.json/?zip=10015&topic=hackathon&order=location&asc=true&#{MEETUP_KEY}")
+    @meetup_parsed_response = JSON.parse(@meetup_response)
   end
 
   def meetup_api_view
-    "<% @meetup_response[\"results\"].each do |meetup| %>
+    "<% @meetup_parsed_response[\"results\"].each do |meetup| %>
     <ul>
     <%= meetup[\"name\"] %>
     <%= meetup[\"link\"] %>
@@ -95,10 +98,11 @@ module FeedHelper
 
   def instagram_api(key)
     @instagram_response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
+    @instagram_parsed_response = JSON.parse(instagram_response)
   end
 
   def instagram_api_view
-    "<% @instagram_response[\"data\"].each do |image| %>
+    "<% @instagram_parsed_response[\"data\"].each do |image| %>
     <ul>
     <%= image[\"link\"] %>
     <% end %>"
