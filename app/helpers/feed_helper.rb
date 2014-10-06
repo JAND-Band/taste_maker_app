@@ -73,15 +73,15 @@ module FeedHelper
   end
 
   def wunderground_api
-    @city = "new_york"
-    @state = "ny"
+    city = "new_york"
+    state = "ny"
     @weather = HTTParty.get("http://api.wunderground.com/api/8df98bbf67d1296c/conditions/q/#{@state}/#{@city}.json")
     @temp_in_farh = @weather["current_observation"]["temp_f"]
   end
 
-  def meetup_api(key)
-    @meetup_response = HTTParty.get("http://api.meetup.com/2/groups.json/?zip=10015&topic=hackathon&order=location&asc=true&#{MEETUP_KEY}")
-    @meetup_parsed_response = JSON.parse(@meetup_response)
+  def meetup_api
+    meetup_response = HTTParty.get("http://api.meetup.com/2/groups.json/?zip=10015&topic=hackathon&order=location&asc=true&key=#{MEETUP_KEY}")
+    @meetup_parsed_response = JSON.parse(meetup_response.to_json)
   end
 
   def meetup_api_view
@@ -95,8 +95,8 @@ module FeedHelper
   end
 
   def instagram_api(key)
-    @instagram_response = HTTParty.get('https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[#{key}]}/media/recent?#{INSTAGRAM_ACCESS_TOKEN}')
-    @instagram_parsed_response = JSON.parse(instagram_response)
+    instagram_response = HTTParty.get("https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[key]}/media/recent?access_token=#{INSTAGRAM_ACCESS_TOKEN}")
+    @instagram_parsed_response = JSON.parse(instagram_response.to_json)
   end
 
   def instagram_api_view

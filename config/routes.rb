@@ -3,12 +3,7 @@ Rails.application.routes.draw do
 
   get "/login" => "sessions#new"
   resource  :session, only: [:create, :destroy]
-
-
   resource  :quiz, only: [:show]
-
-
-
   resources :users do
     member do
       get   "password"
