@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get "/login" => "sessions#new"
   resource  :session, only: [:create, :destroy]
-  resource  :quiz, only: [:show]
+
+
   resources :users do
     member do
       get   "password"
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
       get   "confirm_delete"
     end
 
+    resource  :quiz, only: [:new, :show]
     resource :personality, only: [:show, :update]
     resources :tastes, only: [:index, :show]
   end
