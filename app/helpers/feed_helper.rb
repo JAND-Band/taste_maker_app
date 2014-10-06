@@ -81,7 +81,7 @@ module FeedHelper
 
   def meetup_api(key)
     @meetup_response = HTTParty.get("http://api.meetup.com/2/groups.json/?zip=10015&topic=hackathon&order=location&asc=true&key=#{MEETUP_KEY}")
-    @meetup_parsed_response = JSON.parse(@meetup_response)
+    @meetup_parsed_response = JSON.parse(@meetup_response.to_json)
   end
 
   def meetup_api_view
