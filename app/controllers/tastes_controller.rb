@@ -1,5 +1,6 @@
 class TastesController < ApplicationController
-  before_action :set_taste, only: [:show, :edit, :update, :destroy]
+  before_action :set_taste, only:  [:show]
+  before_action :authorize_admin_only,    only: :index
 
   # GET /tastes
   # GET /tastes.json
@@ -10,6 +11,9 @@ class TastesController < ApplicationController
   # GET /tastes/1
   # GET /tastes/1.json
   def show
+    test
+    # nyt_api(:escape_artist_query)
+    # @response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=trade-fiction-paperback&api-key=a4a129410af3be7a2fedd9101879acf9%1%67095397")
   end
 
   # GET /tastes/new
@@ -71,4 +75,22 @@ class TastesController < ApplicationController
     def taste_params
       params.require(:taste).permit(:name)
     end
+
+    def authorize_admin_only
+    unless current_user.is_admin?
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def authorize_user_only
+    unless current_user == @user
+      redirect_to user_path(current_user)
+    end
+  end
+
+  def authorize_user_or_admin
+    unless current_user == @user || current_user.is_admin?
+      redirect_to user_path(current_user)
+    end
+  end
 end
