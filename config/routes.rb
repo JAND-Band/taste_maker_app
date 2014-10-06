@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   resource  :session, only: [:create, :destroy]
 
-  get "/quiz" => "quizzes#new"
-  resource  :quiz, only: [:create]
+
+  resource  :quiz, only: [:show]
 
 
 
@@ -15,22 +15,14 @@ Rails.application.routes.draw do
       patch "password", action: "update_password"
       get   "confirm_delete"
     end
+
+    resource :personality, only: [:show, :update]
+    resources :tastes, only: [:index, :show]
   end
 
-  resources :personalities
-  resources :escape_artists, controller: 'personalities', type: 'EscapeArtist'
-  resources :intelligentsias, controller: 'personalities', type: 'Intelligentsia'
-  resources :realists, controller: 'personalities', type: 'Realist'
-  resources :sartorialists, controller: 'personalities', type: 'Sartorialist'
-  resources :techies, controller: 'personalities', type: 'Techie'
 
-  resources :tastes
-  resources :does, controller: 'tastes', type: 'Do'
-  resources :eats, controller: 'tastes', type: 'Eat'
-  resources :goes, controller: 'tastes', type: 'Go'
-  resources :listens, controller: 'tastes', type: 'Listen'
-  resources :reads, controller: 'tastes', type: 'Read'
-  resources :shops, controller: 'tastes', type: 'Shop'
+
+
 
 
 
