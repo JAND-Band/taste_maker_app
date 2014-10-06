@@ -10,6 +10,8 @@ class PersonalitiesController < ApplicationController
   # GET /personalities/1
   # GET /personalities/1.json
   def show
+    user = User.find(params[:user_id])
+    @personality = Personality.find(user.personality_id)
   end
 
   # GET /personalities/new
@@ -40,15 +42,16 @@ class PersonalitiesController < ApplicationController
   # PATCH/PUT /personalities/1
   # PATCH/PUT /personalities/1.json
   def update
-    respond_to do |format|
-      if @personality.update(personality_params)
-        format.html { redirect_to @personality, notice: 'Personality was successfully updated.' }
-        format.json { render :show, status: :ok, location: @personality }
-      else
-        format.html { render :edit }
-        format.json { render json: @personality.errors, status: :unprocessable_entity }
-      end
-    end
+
+    # respond_to do |format|
+    #   if @personality.update(personality_params)
+    #     format.html { redirect_to @personality, notice: 'Personality was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @personality }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @personality.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /personalities/1
@@ -64,11 +67,11 @@ class PersonalitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_personality
-      @personality = Personality.find(params[:id])
+      Personality.find_by(name: :answer)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def personality_params
-      params.require(:personality).permit(:name, :descr)
+      params.require(:personality).permit(:name, :description)
     end
 end
