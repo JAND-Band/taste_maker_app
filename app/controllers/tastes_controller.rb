@@ -11,7 +11,9 @@ class TastesController < ApplicationController
   # GET /tastes/1
   # GET /tastes/1.json
   def show
-    nyt_api(:escape_artist_query)
+    test
+    # nyt_api(:escape_artist_query)
+    # @response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=trade-fiction-paperback&api-key=a4a129410af3be7a2fedd9101879acf9%1%67095397")
   end
 
   # GET /tastes/new

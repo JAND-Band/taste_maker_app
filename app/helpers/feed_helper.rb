@@ -12,7 +12,7 @@ module FeedHelper
 
   WUNDERGROUND_API_KEY = ENV['a825d927a8d698d3']
 
-  NYT_API_KEY = "a4a129410af3be7a2fedd9101879acf9:1:67095397"
+  NYT_API_KEY = "a4a129410af3be7a2fedd9101879acf9%1%67095397"
 
   NYT_BESTSELLER_QUERY = {
     escape_artist_query: "trade-fiction-paperback",
@@ -52,7 +52,7 @@ module FeedHelper
   end
 
   def nyt_api(key)
-    @response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=NYT_BESTSELLER_QUERY[#{key}]&#{NYT_API_KEY}")
+    @response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=NYT_BESTSELLER_QUERY[#{key}]&api-key=#{NYT_API_KEY}")
   end
 
   def nyt_api_view
