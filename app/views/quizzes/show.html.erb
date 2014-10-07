@@ -4,7 +4,7 @@
   <h2>Pick an Animal:</h2>
   <form name="quiz" action="/users/<%= params[:user_id] %>/quiz" method="POST" class="form-inline">
     <input type="hidden" name="_method" value="PATCH">
-    <input name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
       <input type="image"  src="<%= asset_path("animalquiz/escapist_animal.jpg") %>" name="answer" width="300" height="350" value="EscapeArtist">
 
@@ -28,7 +28,7 @@
   <h2>Choose a Book:</h2>
   <form name ="quiz" action="/users/<%= params[:user_id] %>/quiz" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
     <input type="image" src="<%= asset_path("booksquiz/escapist_book.jpg") %>" name="answer" width="300" height="350" value="EscapeArtist">
 
@@ -50,7 +50,7 @@
   <h2>Select a Map:</h2>
  <form name="quiz" action="/users/<%= params[:user_id] %>/quiz" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
     <input type="image" src="<%= asset_path("mapquiz/escapist_map.jpg") %>" name="answer" width="300" height="350" value="EscapeArtist">
 
@@ -74,7 +74,7 @@
   <h2>Choose a Landscape:</h2>
   <form name="quiz" action="/users/<%= params[:user_id] %>/quiz" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
     <input type="image" src="<%= asset_path("landscapequiz/escapist_landscape.png") %>" name="answer" width="300" height="350" value="EscapeArtist">
 
@@ -95,7 +95,7 @@
   <h2>Pick a Classical Element:</h2>
  <form name="quiz" action="/users/<%= params[:user_id] %>/quiz" method="POST">
   <input type="hidden" name="_method" value="PATCH">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
     <input type="image" src="<%= asset_path("classicalelementsquiz/escapist_element.jpg") %>" name="answer" width="300" height="350" value="EscapeArtist">
 
