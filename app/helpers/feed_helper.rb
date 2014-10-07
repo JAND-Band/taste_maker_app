@@ -40,7 +40,7 @@ module FeedHelper
 
   def rss_feed_get(url)
     open(url) do |rss|
-      @feed = RSS::Parser.parse(rss)
+      @feed = RSS::Parser.parse(rss, false)
     end
   end
 
