@@ -27,7 +27,7 @@ header hr          { clear: both; }
 
 
 body {
-  padding-bottom: 10px;
+  padding-top: 70px;
   background-color: #DBDBDB;
   color: #4A4A4A;
 }
@@ -84,3 +84,5 @@ body {
 .launch a {
   color: #9C0303;
 }
+
+
