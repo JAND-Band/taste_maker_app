@@ -2,7 +2,7 @@ module FeedHelper
 #####################
 #API KEYS & RSS URLS
 #####################
-  SARTORIALIST_RSS_URL = 'http://www.nyartbeat.com/list/event_opening.en.xml'
+  SARTORIALIST_RSS_URL = 'http://feeds.feedburner.com/nymag/fashion?format=xml'
 
   REALIST_RSS_URL = 'http://feeds.feedburner.com/nymag/grubstreet?format=xml'
 
@@ -40,7 +40,7 @@ module FeedHelper
 
   def rss_feed_get(url)
     open(url) do |rss|
-      @feed = RSS::Parser.parse(rss)
+      @feed = RSS::Parser.parse(rss, false)
     end
   end
 

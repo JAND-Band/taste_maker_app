@@ -5,31 +5,6 @@
   <%= @personality.name %>: <%= @personality.tags %>
 </h3>
 
-<div class="weather">
-  <% @parsed_weather["forecast"].each do |first| %>
-    <% first["simpleforecast"].each do |second| %>
-    <% second["forecastday"].each do |third| %>
-    <ul>
-    <%= third["conditions"] %>
-    </ul>
-  <% end %>
-  <% end %>
-  <% end %>
-
-  <% @parsed_weather["current_observation"].each do |one| %>
-    <ul>
-    <%= one["feelslike_string"] %>
-    </ul>
-  <% end %>
-
-  <% @parsed_weather["current_observation"].each do |wind| %>
-    <ul>
-    <%= wind["wind_string"] %>
-    </ul>
-  <% end %>
-</div>
-
-
 <p>
   <% @tastes.each do |taste| %>
     <% if taste.personality_id == @personality.id %>
@@ -56,13 +31,24 @@
               <% end %>
             <% end %>
         <% when "Listen" %>
-        <p> Spotify </p>
+          <% case @personality.id %>
+          <% when 1 %>
+            <iframe src="https://embed.spotify.com/?uri=https://play.spotify.com/user/mobymus/playlist/7aBuRPft205uzpxsBxp3qS" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <% when 2 %>
+            <iframe src="https://embed.spotify.com/?uri=https://play.spotify.com/user/soundrop/playlist/5Yibg8tyfrCKxHWzFIpFcN" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <% when 3 %>
+            <iframe src="https://embed.spotify.com/?uri=https://play.spotify.com/user/sharemyplaylists.com/playlist/3KBBM9y2iNPVm8tVYmfmL9" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <% when 4 %>
+            <iframe src="https://embed.spotify.com/?uri=https://play.spotify.com/user/sonymusicbelgium/playlist/6tnJ4g740KEorytHqqmmCU" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <% when 5 %>
+            <iframe src="https://embed.spotify.com/?uri=https://play.spotify.com/user/12128193812/playlist/4DCIBYMQFR2IFXBqjDZJik" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+          <% end %>
         <% when "Do" %>
           <% if @personality.id != 5 %>
             <ul><%= @feed.channel.title %></ul>
             <% @feed.items.each do |item| %>
               <ul><%= item.title %></ul>
-            <% end %>'
+            <% end %>
           <% else %>
              <% @meetup_parsed_response["results"].each do |meetup| %>
              <ul>
@@ -70,12 +56,13 @@
              <%= meetup["link"] %>
              <%= meetup["description"] %>
              <%= meetup["rating"] %>
-             <% end %>"
+             <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
 </p>
+
 <%= render 'layouts/footer' %>
 
 
