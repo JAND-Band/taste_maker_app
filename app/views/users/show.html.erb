@@ -1,28 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="user_info">
+    <h1><%= notice %></h1>
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+      <p>
+        <strong>Birthday:</strong>
+        <%= @user.dob %>
+      </p>
+  </div>
 
-<p>
-  <strong>Birthday:</strong>
-  <%= @user.dob %>
-</p>
-
-<p>
-  <strong>Personality:</strong>
+<div class="container-fluid">
+<div class="jumbotron">
+  <h2>Personality:</h2>
   <% id = @user.personality_id %>
   <% personality = Personality.find(id) %>
-  <a href="/users/<%= @user.id %>/personality"><%= personality.name %></a>
-</p>
+  <h1><a href="/users/<%= @user.id %>/personality"><%= personality.name %></a></h1>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="container-fluid">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <%= link_to 'Home', root_path %> |
+  <%= link_to 'Launch', user_taste_path(@user.id, personality.id) %> |
+  <%= link_to 'Back', users_path %> |
+  <%= link_to("Logout", session_path, method: :delete) %>
+  </nav>
 
 <%= link_to 'Go to your dashboard', user_taste_path(@user.id, personality.id) %> |
 <%= link_to 'Back', users_path %>
 <%= render 'layouts/footer' %>
+</div>
 

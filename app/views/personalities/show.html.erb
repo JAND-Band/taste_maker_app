@@ -1,15 +1,23 @@
+<header>
+  <%= link_to 'Home', root_path %>
+</header>
 
-<p id="notice"><%= notice %></p>
+<div class="container">
+<h1 id="notice"><%= notice %></h1>
 
-<h2 class="jumbotron">
-  <%= @personality.name %>: <%= @personality.tags %>
-</h2>
+<div class="page-header">
+  <h1><%= @personality.name %>: <%= @personality.tags %></h1>
+</div>
 
-<p>
-  <strong><%= @personality.description %></strong>
-</p>
+<div class="container">
+  <h3><%= @personality.description %></h3>
+</div>
 
-<p>(<%= link_to('Go to your dashboard.', user_taste_path) %>)</p>
-<p> Disagree with our assessment? (<%= link_to("Retake the quiz
-", user_quiz_path) %>)</p>
-<%= render 'layouts/footer' %>
+
+<div class="launch">
+<button type="button" class="btn btn-default btn-lg"><%= link_to('Launch!', user_taste_path) %></button>
+<p> Disagree with our assessment? <%= link_to("Retake the quiz
+", user_quiz_path) %> </p>
+</div>
+</div>
+

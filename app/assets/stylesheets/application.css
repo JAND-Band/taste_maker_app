@@ -27,6 +27,7 @@ header hr          { clear: both; }
 
 
 body {
+  padding-top: 70px;
   background-color: #DBDBDB;
   color: #4A4A4A;
 }
@@ -79,4 +80,9 @@ body {
 .panel-title h3 {
   color: #9C0303;
 }
+
+.launch a {
+  color: #9C0303;
+}
+
 
