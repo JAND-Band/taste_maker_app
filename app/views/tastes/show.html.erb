@@ -1,15 +1,36 @@
 
 <p id="notice"><%= notice %></p>
 
+<h3 class="jumbotron">
+  <%= @personality.name %>: <%= @personality.tags %>
+</h3>
 
 <p>
-  <strong>Name:</strong>
-  <%= @taste.category %>
+  <% @tastes.each do |taste| %>
+    <% if taste.personality_id == @personality.id %>
+      <%= taste.category %>
+      <% case taste.personality_id %>
+      <% when 1 %>
+        <% case taste.category %>
+        <% when "Eat" %>
+          <% @instagram_parsed_response["data"].first do |image| %>
+            <img src="<% image["link"] %>" height="250" />
+          <% end %>
+        <% when "Do" %>
+          <ul><%= @feed.channel.title %></ul>
+          <% @feed.items.each do |item| %>
+            <ul><%= item.title %></ul>
+          <% end %>'
+        <% end %>
+      <% end %>
+
+    <% end%>
+  <% end %>
 </p>
 <% if @taste.id == 4 %>
 <%= nyt_api_view %>
 <% end %>
 
 
-<%= link_to 'Edit', edit_taste_path(@taste) %> |
-<%= link_to 'Back', tastes_path %>
+
+

@@ -20,9 +20,8 @@
   <strong>Personality:</strong>
   <% id = @user.personality_id %>
   <% personality = Personality.find(id) %>
-  <%= personality.name %>
+  <a href="/users/<%= @user.id %>/personality"><%= personality.name %></a>
 </p>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Go to your dashboard', user_taste_path(@user.id, personality.id) %> |
 <%= link_to 'Back', users_path %>

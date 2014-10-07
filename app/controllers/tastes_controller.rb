@@ -11,6 +11,11 @@ class TastesController < ApplicationController
   # GET /tastes/1
   # GET /tastes/1.json
   def show
+    user = User.find(params[:user_id])
+    @personality = Personality.find(user.personality_id)
+    @tastes = Taste.all
+    rss_feed_get(ESCAPE_ARTIST_URL)
+    instagram_api(:eat_query)
     # meetup_api("4830227a3b7fa7b3a564265372f718")
     nyt_api(:escape_artist_query)
     # @response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=trade-fiction-paperback&api-key=a4a129410af3be7a2fedd9101879acf9%1%67095397")

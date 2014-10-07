@@ -22,8 +22,8 @@ class QuizzesController < ApplicationController
       personality_id = Personality.find_by(name: user_personality).id
       user = User.find(params[:user_id])
       user.personality_id = personality_id
-      user.save!
-      @@counter = 0
+      user.save
+      @@counter = 1
       redirect_to user_personality_path
     else
       @@answers_array << params["answer"]

@@ -45,10 +45,10 @@ module FeedHelper
   end
 
   def rss_feed_view
-     "<ul><%= @feed.channel.title %></ul>
+      '<ul><%= @feed.channel.title %></ul>
       <% @feed.items.each do |item| %>
-    <ul><%= item.title %></ul>
-   <% end %>"
+        <ul><%= item.title %></ul>
+      <% end %>'
   end
 
   def nyt_api(key)
