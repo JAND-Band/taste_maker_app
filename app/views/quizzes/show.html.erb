@@ -2,7 +2,7 @@
 <div class="container">
 <section id="1">
   <h2>Pick an Animal:</h2>
-  <form name="quiz" action="/users/<%= params[:user_id] %>/quiz" method="POST" class="form-inline">
+  <form name="quiz" action="/users/<%= params[:user_id] %>/quiz" method="POST">
     <input type="hidden" name="_method" value="PATCH">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
