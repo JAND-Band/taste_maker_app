@@ -1,18 +1,27 @@
+<div class="page-header">
+  <h1>&nbsp;TasteMaker <small>Curating Tastes Since 2014!</small></h1>
+</div>
 
-<div class="front-matter">
-  <h1>Welcome to TasteMaker</h1>
-  <p><em>Curating Tastes Since 2014!</em></p>
-  <p>Login</p>
-  <div class="login">
+<div class="jumbotron">
+  <h2>Login</h2>
+  <div style="width: 100%;" class=".panel-title."
+    <div class="panel-body">
     <%= form_tag(session_path) do %>
       <%= label_tag(:email) %><br/>
-      <%= text_field_tag(:email) %><br/>
-      <%= label_tag(:password) %><br/>
-      <%= password_field_tag(:password) %><br/>
-      <%= submit_tag('Login') %>
+      <%= text_field_tag(:email) %><br>
+      <%= label_tag(:password) %><br>
+      <%= password_field_tag(:password) %><br>
+      <%= submit_tag('submit') %>
     <% end %>
     <p style="color: red"><%= flash[:error] %></p>
     <p style="color: green;"><strong><%= flash[:notice] %></strong><p>
   </div>
-  <p><%= link_to('Sign up', new_user_path) %></p>
+  <br>
+  <div class="signup">
+    <p><%= link_to('Sign up!', new_user_path) %></p>
+  </div>
 </div>
+</div>
+
+
+
