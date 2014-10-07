@@ -2,10 +2,12 @@
 
 <%= notice %>
 
-<div class="row">
-<h3 class="jumbotron">
+<div class="page-header">
   <%= @personality.name %>: <%= @personality.tags %>
-</h3>
+</div>
+
+
+<div class="row">
 
 <p>
   <% @tastes.each do |taste| %>
