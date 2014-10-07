@@ -11,9 +11,41 @@ class TastesController < ApplicationController
   # GET /tastes/1
   # GET /tastes/1.json
   def show
-    # meetup_api("4830227a3b7fa7b3a564265372f718")
+    user = User.find(params[:user_id])
+    @personality = Personality.find(user.personality_id)
+    @tastes = Taste.all
+    case @personality.id
+    when 1
+    rss_feed_get(ESCAPE_ARTIST_URL)
     nyt_api(:escape_artist_query)
-    # @response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=trade-fiction-paperback&api-key=a4a129410af3be7a2fedd9101879acf9%1%67095397")
+    instagram_api_eat
+    instagram_api_shop
+    instagram_api_go
+    when 2
+    rss_feed_get(INTELLIGENTSIA_URL)
+    nyt_api(:intelligentsia_query)
+    instagram_api_eat
+    instagram_api_shop
+    instagram_api_go
+    when 3
+    rss_feed_get(REALIST_RSS_URL)
+    nyt_api(:realist_query)
+    instagram_api_eat
+    instagram_api_shop
+    instagram_api_go
+    when 4
+    nyt_api(:sartorialist_query)
+    rss_feed_get(SARTORIALIST_RSS_URL)
+    instagram_api_eat
+    instagram_api_shop
+    instagram_api_go
+    when 5
+    nyt_api(:techie)
+    meetup_api
+    instagram_api_eat
+    instagram_api_shop
+    instagram_api_go
+    end
   end
 
   # GET /tastes/new
@@ -68,7 +100,7 @@ class TastesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_taste
-      @taste = Taste.find(params[:id])
+      @taste = Taste.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -77,20 +109,20 @@ class TastesController < ApplicationController
     end
 
     def authorize_admin_only
-    unless current_user.is_admin?
-      redirect_to user_path(current_user)
+      unless current_user.is_admin?
+        redirect_to user_path(current_user)
+      end
     end
-  end
 
-  def authorize_user_only
-    unless current_user == @user
-      redirect_to user_path(current_user)
+    def authorize_user_only
+      unless current_user == @user
+        redirect_to user_path(current_user)
+      end
     end
-  end
 
-  def authorize_user_or_admin
-    unless current_user == @user || current_user.is_admin?
-      redirect_to user_path(current_user)
+    def authorize_user_or_admin
+      unless current_user == @user || current_user.is_admin?
+        redirect_to user_path(current_user)
+      end
     end
   end
-end

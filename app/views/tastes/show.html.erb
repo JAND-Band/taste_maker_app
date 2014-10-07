@@ -1,15 +1,48 @@
 
 <p id="notice"><%= notice %></p>
 
+<h3 class="jumbotron">
+  <%= @personality.name %>: <%= @personality.tags %>
+</h3>
 
 <p>
-  <strong>Name:</strong>
-  <%= @taste.category %>
+  <% @tastes.each do |taste| %>
+    <% if taste.personality_id == @personality.id %>
+      <%= taste.category %>
+        <% case taste.category %>
+        <% when "Eat" %>
+          <img src="<%= @instagram_parsed_response_eat["data"][3]["images"]["standard_resolution"]["url"] %>" height="250" />
+        <% when "Go" %>
+          <img src="<%= @instagram_parsed_response_go["data"][3]["images"]["standard_resolution"]["url"] %>" height="250" />
+        <% when "Shop" %>
+          <img src="<%= @instagram_parsed_response_shop["data"][3]["images"]["standard_resolution"]["url"] %>" height="250" />
+        <% when "Read" %>
+          <% @nyt_parsed_response["results"].each do |book| %>
+              <% book["book_details"].each do |info| %>
+              <ul>
+              <%= info["title"] %>
+              <br></br>
+              <%= info["author"] %>
+              <br></br>
+              <%= info["description"] %>
+              <br></br>
+              <%= info["publisher"] %>
+              </ul>
+              <% end %>
+            <% end %>
+        <% when "Listen" %>
+        <p> Spotify </p>
+        <% when "Do" %>
+          <ul><%= @feed.channel.title %></ul>
+          <% @feed.items.each do |item| %>
+            <ul><%= item.title %></ul>
+          <% end %>'
+        <% end %>
+      <% end %>
+    <% end %>
 </p>
-<% if @taste.id == 4 %>
-<%= nyt_api_view %>
-<% end %>
 
 
-<%= link_to 'Edit', edit_taste_path(@taste) %> |
-<%= link_to 'Back', tastes_path %>
+
+
+

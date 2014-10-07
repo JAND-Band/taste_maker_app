@@ -10,8 +10,8 @@ class PersonalitiesController < ApplicationController
   # GET /personalities/1
   # GET /personalities/1.json
   def show
-    user = User.find(params[:user_id])
-    @personality = Personality.find(user.personality_id)
+    @user = User.find(params[:user_id])
+    @personality = Personality.find(@user.personality_id)
   end
 
   # GET /personalities/new

@@ -8,7 +8,7 @@ module FeedHelper
 
   ESCAPE_ARTIST_URL = 'http://www.redbullskydiveteam.com/rss.xml'
 
-  INTELLIGENTSIA_URL = 'http://www.strandbooks.com/index.cfm/fuseaction/event.index/nodeID/a35c34a6-bda5-4733-9f7d-fa7187e8c2e3/?view=rss'
+  INTELLIGENTSIA_URL = 'http://www.strandbooks.com/index.cfm/fuseaction/event.index/nodeID/a35c34a6-bda5-4733-9f7d-fa7187e8c2e3/?view=rss.xml'
 
   WUNDERGROUND_API_KEY = ENV['a825d927a8d698d3']
 
@@ -44,33 +44,33 @@ module FeedHelper
     end
   end
 
-  def rss_feed_view
-     "<ul><%= @feed.channel.title %></ul>
-      <% @feed.items.each do |item| %>
-    <ul><%= item.title %></ul>
-   <% end %>"
-  end
+  # def rss_feed_view
+  #     '<ul><%= @feed.channel.title %></ul>
+  #     <% @feed.items.each do |item| %>
+  #       <ul><%= item.title %></ul>
+  #     <% end %>'
+  # end
 
   def nyt_api(key)
     nyt_response = HTTParty.get("http://api.nytimes.com/svc/books/v2/lists.json?list-name=#{NYT_BESTSELLER_QUERY[key]}&api-key=#{NYT_API_KEY}")
     @nyt_parsed_response = JSON.parse(nyt_response.to_json)
   end
 
-  def nyt_api_view
-    "<% @nyt_parsed_response[\"results\"].each do |book| %>
-      <% book[\"book_details\"].each do |info| %>
-      <ul>
-      <%= info[\"title\"] %>
-      <br></br>
-      <%= info[\"author\"] %>
-      <br></br>
-      <%= info[\"description\"] %>
-      <br></br>
-      <%= info[\"publisher\"] %>
-      </ul>
-      <% end %>
-    <% end %>"
-  end
+  # def nyt_api_view
+  #   "<% @nyt_parsed_response[\"results\"].each do |book| %>
+  #     <% book[\"book_details\"].each do |info| %>
+  #     <ul>
+  #     <%= info[\"title\"] %>
+  #     <br></br>
+  #     <%= info[\"author\"] %>
+  #     <br></br>
+  #     <%= info[\"description\"] %>
+  #     <br></br>
+  #     <%= info[\"publisher\"] %>
+  #     </ul>
+  #     <% end %>
+  #   <% end %>"
+  # end
 
   def wunderground_api
     city = "new_york"
@@ -84,27 +84,38 @@ module FeedHelper
     @meetup_parsed_response = JSON.parse(meetup_response.to_json)
   end
 
-  def meetup_api_view
-    "<% @meetup_parsed_response[\"results\"].each do |meetup| %>
-    <ul>
-    <%= meetup[\"name\"] %>
-    <%= meetup[\"link\"] %>
-    <%= meetup[\"description\"] %>
-    <%= meetup[\"rating\"] %>
-    <% end %>"
+  # def meetup_api_view
+  #   "<% @meetup_parsed_response[\"results\"].each do |meetup| %>
+  #   <ul>
+  #   <%= meetup[\"name\"] %>
+  #   <%= meetup[\"link\"] %>
+  #   <%= meetup[\"description\"] %>
+  #   <%= meetup[\"rating\"] %>
+  #   <% end %>"
+  # end
+
+  def instagram_api_eat
+    instagram_response = HTTParty.get("https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[:eat_query]}/media/recent?access_token=#{INSTAGRAM_ACCESS_TOKEN}")
+    @instagram_parsed_response_eat = JSON.parse(instagram_response.to_json)
   end
 
-  def instagram_api(key)
-    instagram_response = HTTParty.get("https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[key]}/media/recent?access_token=#{INSTAGRAM_ACCESS_TOKEN}")
-    @instagram_parsed_response = JSON.parse(instagram_response.to_json)
+  def instagram_api_shop
+    instagram_response = HTTParty.get("https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[:shop_query]}/media/recent?access_token=#{INSTAGRAM_ACCESS_TOKEN}")
+    @instagram_parsed_response_shop = JSON.parse(instagram_response.to_json)
   end
 
-  def instagram_api_view
-    "<% @instagram_parsed_response[\"data\"].each do |image| %>
-    <ul>
-    <%= image[\"link\"] %>
-    <% end %>"
+  def instagram_api_go
+    instagram_response = HTTParty.get("https://api.instagram.com/v1/tags/#{INSTAGRAM_QUERY[:go_query]}/media/recent?access_token=#{INSTAGRAM_ACCESS_TOKEN}")
+    @instagram_parsed_response_go = JSON.parse(instagram_response.to_json)
   end
+
+
+  # def instagram_api_view
+  #   "<% @instagram_parsed_response[\"data\"].each do |image| %>
+  #   <ul>
+  #   <%= image[\"link\"] %>
+  #   <% end %>"
+  # end
 
   def test
     @response = "test works"

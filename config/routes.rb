@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
     resource  :quiz, only: [:show, :update]
     resource :personality, only: [:show, :update]
-    resources :tastes, only: [:index, :show]
+    get "/taste" => "tastes#show"
+    resources :tastes, only: [:index]
   end
 
 
