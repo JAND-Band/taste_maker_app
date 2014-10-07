@@ -8,7 +8,7 @@ module FeedHelper
 
   ESCAPE_ARTIST_URL = 'http://www.redbullskydiveteam.com/rss.xml'
 
-  INTELLIGENTSIA_URL = 'http://www.strandbooks.com/index.cfm/fuseaction/event.index/nodeID/a35c34a6-bda5-4733-9f7d-fa7187e8c2e3/?view=rss.xml'
+  INTELLIGENTSIA_URL = 'http://www.buzzsprout.com/25059.rss'
 
   WUNDERGROUND_API_KEY = ENV['a825d927a8d698d3']
 
@@ -73,10 +73,8 @@ module FeedHelper
   # end
 
   def wunderground_api
-    city = "new_york"
-    state = "ny"
-    @weather = HTTParty.get("http://api.wunderground.com/api/8df98bbf67d1296c/conditions/q/#{@state}/#{@city}.json")
-    @temp_in_farh = @weather["current_observation"]["temp_f"]
+    weather = HTTParty.get("http://api.wunderground.com/api/ea8fc9db9a57119c/forecast/geolookup/conditions/q/NY/New_York.json")
+    @parsed_weather = JSON.parse(weather.to_json)
   end
 
   def meetup_api

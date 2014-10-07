@@ -14,6 +14,7 @@ class TastesController < ApplicationController
     user = User.find(params[:user_id])
     @personality = Personality.find(user.personality_id)
     @tastes = Taste.all
+    wunderground_api
     case @personality.id
     when 1
     rss_feed_get(ESCAPE_ARTIST_URL)
