@@ -5,29 +5,7 @@
   <%= @personality.name %>: <%= @personality.tags %>
 </h3>
 
-<div class="weather">
-  <% @parsed_weather["forecast"].each do |first| %>
-    <% first["simpleforecast"].each do |second| %>
-    <% second["forecastday"].each do |third| %>
-    <ul>
-    <%= third["conditions"] %>
-    </ul>
-  <% end %>
-  <% end %>
-  <% end %>
 
-  <% @parsed_weather["current_observation"].each do |one| %>
-    <ul>
-    <%= one["feelslike_string"] %>
-    </ul>
-  <% end %>
-
-  <% @parsed_weather["current_observation"].each do |wind| %>
-    <ul>
-    <%= wind["wind_string"] %>
-    </ul>
-  <% end %>
-</div>
 
 
 <p>
