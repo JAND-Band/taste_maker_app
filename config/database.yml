@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: taste_maker_app_production
-  username: taste_maker_app
-  password: <%= ENV['TASTE_MAKER_APP_DATABASE_PASSWORD'] %>
+  # username: taste_maker_app
+  # password: <%= ENV['TASTE_MAKER_APP_DATABASE_PASSWORD'] %>
