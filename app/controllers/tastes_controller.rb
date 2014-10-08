@@ -17,36 +17,38 @@ class TastesController < ApplicationController
     wunderground_api
     case @personality.id
     when 1
-    rss_feed_get(ESCAPE_ARTIST_URL)
-    nyt_api(:escape_artist_query)
-    instagram_api_eat
-    instagram_api_shop
-    instagram_api_go
+      rss_feed_get(ESCAPE_ARTIST_URL)
+      nyt_api(:escape_artist_query)
+      instagram_api_eat
+      instagram_api_shop
+      instagram_api_go
     when 2
-    rss_feed_get(INTELLIGENTSIA_URL)
-    nyt_api(:intelligentsia_query)
-    instagram_api_eat
-    instagram_api_shop
-    instagram_api_go
+      rss_feed_get(INTELLIGENTSIA_URL)
+      nyt_api(:intelligentsia_query)
+      instagram_api_eat
+      instagram_api_shop
+      instagram_api_go
     when 3
-    rss_feed_get(REALIST_RSS_URL)
-    nyt_api(:realist_query)
-    instagram_api_eat
-    instagram_api_shop
-    instagram_api_go
+      rss_feed_get(REALIST_RSS_URL)
+      nyt_api(:realist_query)
+      instagram_api_eat
+      instagram_api_shop
+      instagram_api_go
     when 4
-    nyt_api(:sartorialist_query)
-    rss_feed_get(SARTORIALIST_RSS_URL)
-    instagram_api_eat
-    instagram_api_shop
-    instagram_api_go
+      nyt_api(:sartorialist_query)
+      rss_feed_get(SARTORIALIST_RSS_URL)
+      instagram_api_eat
+      instagram_api_shop
+      instagram_api_go
     when 5
-    nyt_api(:techie)
-    meetup_api
-    instagram_api_eat
-    instagram_api_shop
-    instagram_api_go
+      nyt_api(:techie)
+      meetup_api
+      instagram_api_eat
+      instagram_api_shop
+      instagram_api_go
     end
+
+    @tastes = @tastes.select{ |taste| taste.personality_id == @personality.id }
   end
 
   # GET /tastes/new

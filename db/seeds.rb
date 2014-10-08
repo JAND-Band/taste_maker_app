@@ -1,6 +1,6 @@
-Personality.delete_all
-User.delete_all
-Taste.delete_all
+# Personality.delete_all
+# User.delete_all
+# Taste.delete_all
 
 p1 = Personality.create(name:"EscapeArtist", tags: "Born To Run", description: "No one does travel and exploration quite like you. You are Kerouac, on the road, taking in all the sound and fury of earth's remotest places and most interesting cultures. You give tips to Bourdain and run with the bulls in Spain. Your Instagram account has tons of followers, almost as many as your passport has stamps. What’s next? To Infinity and Beyond!")
 p2 = Personality.create(name:"Intelligentsia", tags: "Wicked Smart", description: "Your thirst for knowledge knows no bounds.  Whatever your interest or area of expertise, you own it with an intellectual capacity that is unparalleled. Whether exploring new theories or designing a better mousetrap, you can still be depended upon for scintillating conversation.  In fact, that time you had a stomach virus and couldn’t attend the salon on the works of Marcel Proust, they just cancelled it.  That’s right, you’ve got that upcoming MacArthur Genius grant in the bag.")
