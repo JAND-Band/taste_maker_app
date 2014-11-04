@@ -10,6 +10,9 @@
 
 [1]: http://i.imgur.com/JpA7r3k.png "Login/Sign-Up"
 [2]: http://i.imgur.com/M7NINZe.png "Sign-Up"
+[3]: http://i.imgur.com/O2lPPJo.png "Quiz 1"
+[4]: http://i.imgur.com/vAV28V1.png "Quiz 2"
+[5]: http://i.imgur.com/6SMcJzu.png "Quiz 3"
 
 ### User Stories
 #### As a user...
