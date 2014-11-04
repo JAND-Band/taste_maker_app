@@ -28,7 +28,7 @@ header hr          { clear: both; }
 
 body {
   padding-top: 70px;
-  background-color: #DBDBDB;
+  background-color: white;
   color: #4A4A4A;
 }
 
@@ -87,9 +87,28 @@ body {
 
 }
 
+img {
+  border-radius: 3px;
+  border: 1px solid gray;
+}
+
 
 .scrollable {
-  height: 300px;
-  width: 300px;
-  overflow: scroll;
+  height: 350px;
+  width: 350px;
+  overflow-y: scroll;
+  border: 1px solid gray;
+  box-shadow: 1px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+#widgetContainer {
+  height: 250px;
+  width: 250px;
+}
+
+#taste-titles {
+  font-size: 32px;
+  font-weight: bold;
 }

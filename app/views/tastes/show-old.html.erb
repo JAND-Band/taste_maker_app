@@ -34,9 +34,9 @@
         <% @nyt_parsed_response["results"].each do |book| %>
           <% book["book_details"].each do |info| %>
             <div class="books">
-              <%= info["title"] %>
-              <%= info["author"] %>
-              <%= info["description"] %>
+              <%= info["title"] %></br>
+              <%= info["author"] %></br>
+              <%= info["description"] %></br>
               <%= info["publisher"] %>
             </div>
           <% end %>
